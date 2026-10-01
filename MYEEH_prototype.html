@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MYEEH | Mamelodi Youth Employment & Enterprise Hub</title>
+<style>
+:root{
+  --navy:#102a43; --blue:#1976d2; --teal:#16a085; --gold:#f4b942;
+  --light:#f5f8fc; --text:#243447; --muted:#60758a; --white:#fff;
+  --shadow:0 10px 30px rgba(16,42,67,.10); --radius:18px;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:var(--light);line-height:1.6}
+a{text-decoration:none;color:inherit}
+button,.btn{cursor:pointer;border:0;font:inherit}
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid #e6edf4}
+.nav-inner{max-width:1180px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--navy)}
+.logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--teal));display:grid;place-items:center;color:white;font-weight:900}
+.logo small{display:block;color:var(--muted);font-weight:600;font-size:10px;letter-spacing:.5px}
+.nav-links{display:flex;gap:20px;align-items:center;font-size:14px;font-weight:700}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{background:var(--navy);color:#fff;padding:10px 16px;border-radius:10px}
+.menu{display:none;background:none;font-size:25px}
+.hero{background:linear-gradient(120deg,#102a43 0%,#165d92 55%,#118b77 100%);color:white}
+.hero-inner{max-width:1180px;margin:auto;padding:76px 22px 68px;display:grid;grid-template-columns:1.25fr .75fr;gap:55px;align-items:center}
+.eyebrow{display:inline-flex;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:7px 12px;border-radius:99px;font-size:13px;font-weight:800}
+.hero h1{font-size:clamp(40px,6vw,68px);line-height:1.02;margin:18px 0}
+.hero h1 span{color:#8fe7d3}
+.hero p{font-size:18px;max-width:650px;color:#e6f3fb}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 19px;border-radius:12px;font-weight:800}
+.btn-primary{background:var(--gold);color:#182b3b}
+.btn-outline{border:1px solid rgba(255,255,255,.4);color:#fff;background:rgba(255,255,255,.08)}
+.hero-card{background:#fff;color:var(--text);padding:25px;border-radius:24px;box-shadow:0 20px 45px rgba(0,0,0,.2)}
+.hero-card h3{margin-top:0;color:var(--navy)}
+.progress{height:9px;background:#e9eff5;border-radius:99px;overflow:hidden;margin:9px 0 18px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:99px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;max-width:1180px;margin:-27px auto 0;padding:0 22px;position:relative}
+.stat{background:white;padding:18px;border-radius:16px;box-shadow:var(--shadow);text-align:center}
+.stat strong{font-size:28px;color:var(--navy);display:block}
+.section{max-width:1180px;margin:auto;padding:75px 22px}
+.section-head{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:30px}
+.kicker{color:var(--teal);font-weight:900;text-transform:uppercase;letter-spacing:1.4px;font-size:12px}
+h2{font-size:38px;line-height:1.1;color:var(--navy);margin:8px 0}
+.section-head p{max-width:570px;color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:white;border-radius:var(--radius);padding:23px;box-shadow:var(--shadow);border:1px solid #e7eef5}
+.icon{width:48px;height:48px;border-radius:13px;background:#e9f4ff;color:var(--blue);display:grid;place-items:center;font-size:22px;font-weight:900;margin-bottom:16px}
+.card h3{margin:0 0 7px;color:var(--navy)}
+.card p{color:var(--muted);font-size:14px}
+.tag{display:inline-block;padding:5px 9px;border-radius:99px;background:#edf8f5;color:#147a68;font-size:11px;font-weight:800;margin-right:5px}
+.job-meta{font-size:13px;color:var(--muted);margin:10px 0 15px}
+.job-actions{display:flex;gap:8px}
+.small-btn{padding:9px 12px;border-radius:9px;background:#eef5fb;color:var(--blue);font-weight:800;font-size:13px}
+.small-btn.primary{background:var(--blue);color:white}
+.tabs{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:22px}
+.tab{padding:9px 14px;border-radius:10px;background:#e8eef4;color:var(--navy);font-weight:800}
+.tab.active{background:var(--navy);color:white}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.feature{background:white;border-radius:22px;padding:28px;box-shadow:var(--shadow);border:1px solid #e7eef5}
+.feature ul{padding-left:20px;color:var(--muted)}
+.notice{background:#fff8e5;border-left:4px solid var(--gold);padding:14px 16px;border-radius:10px;color:#66521c;font-size:14px}
+.workshop{display:flex;gap:17px;align-items:flex-start}
+.datebox{min-width:62px;text-align:center;background:#eaf4ff;border-radius:12px;padding:8px;color:var(--blue);font-weight:900}
+.datebox b{font-size:23px;display:block;line-height:1}
+.footer{background:var(--navy);color:white;padding:45px 22px}
+.footer-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:35px}
+.footer p,.footer a{color:#bcd0df;font-size:14px}
+.footer h4{margin-top:0}
+.modal{display:none;position:fixed;inset:0;background:rgba(5,20,35,.65);z-index:50;place-items:center;padding:20px}
+.modal.open{display:grid}
+.modal-box{background:white;border-radius:20px;max-width:520px;width:100%;padding:28px}
+.close{float:right;background:#edf2f6;border-radius:50%;width:34px;height:34px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccd9e5;border-radius:10px;margin:6px 0 13px;font:inherit}
+label{font-size:13px;font-weight:800;color:var(--navy)}
+.success{display:none;padding:12px;background:#e9f8f3;color:#126d5d;border-radius:10px;margin-top:10px}
+@media(max-width:850px){
+ .nav-links{display:none}.menu{display:block}.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.split,.footer-inner{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+ .grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.section{padding:55px 18px}.nav-inner{padding:12px 18px}.hero-inner{padding:55px 18px}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#home"><span class="logo-mark">M</span><span>MYEEH<small>Mamelodi Youth Employment & Enterprise Hub</small></span></a>
+    <button class="menu" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#opportunities">Opportunities</a><a href="#cv">CV Help</a><a href="#business">Business</a>
+      <a href="#workshops">Workshops</a><a href="#safety">Safety</a>
+      <a href="#contact" class="nav-cta">Get Help</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+ <div class="hero-inner">
+  <div>
+   <span class="eyebrow">MAMELODI • YOUTH • OPPORTUNITY</span>
+   <h1>Creating opportunities.<br><span>Building futures.</span></h1>
+   <p>MYEEH connects young people in Mamelodi with employment, education, entrepreneurship, practical skills and community development support — all in one place.</p>
+   <div class="hero-buttons">
+    <a href="#opportunities" class="btn btn-primary">Explore opportunities →</a>
+    <a href="#cv" class="btn btn-outline">Build my CV</a>
+   </div>
+  </div>
+  <div class="hero-card">
+   <h3>Start your journey</h3>
+   <p>Choose what you need help with today.</p>
+   <div class="progress"><i style="width:72%"></i></div>
+   <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px">
+    <button class="small-btn primary" onclick="openModal('opportunity')">Find a job</button>
+    <button class="small-btn" onclick="document.querySelector('#cv').scrollIntoView()">CV support</button>
+    <button class="small-btn" onclick="document.querySelector('#business').scrollIntoView()">Start a business</button>
+    <button class="small-btn" onclick="document.querySelector('#workshops').scrollIntoView()">Join training</button>
+   </div>
+  </div>
+ </div>
+</header>
+
+<div class="stats">
+ <div class="stat"><strong>50+</strong><span>Youth targeted</span></div>
+ <div class="stat"><strong>4</strong><span>Core support areas</span></div>
+ <div class="stat"><strong>1</strong><span>Community hub</span></div>
+</div>
+
+<section class="section" id="opportunities">
+ <div class="section-head"><div><span class="kicker">Find opportunities</span><h2>Jobs, learning & growth</h2></div><p>Browse example opportunity cards for the prototype. In a live version, these can connect to verified opportunity sources.</p></div>
+ <div class="tabs"><button class="tab active" onclick="filterJobs('all',this)">All</button><button class="tab" onclick="filterJobs('job',this)">Jobs</button><button class="tab" onclick="filterJobs('learn',this)">Learnerships</button><button class="tab" onclick="filterJobs('intern',this)">Internships</button></div>
+ <div class="grid" id="jobGrid">
+  <div class="card job" data-type="job"><span class="tag">JOB</span><h3>Retail Assistant</h3><p>Customer service and stock support opportunity.</p><div class="job-meta">📍 Mamelodi • Entry level</div><button class="small-btn primary" onclick="openModal('opportunity')">View / Apply</button></div>
+  <div class="card job" data-type="learn"><span class="tag">LEARNERSHIP</span><h3>Business Administration</h3><p>Practical workplace exposure with administration skills.</p><div class="job-meta">📍 Pretoria • Youth programme</div><button class="small-btn primary" onclick="openModal('opportunity')">View / Apply</button></div>
+  <div class="card job" data-type="intern"><span class="tag">INTERNSHIP</span><h3>Digital Support Intern</h3><p>Build digital, communication and customer-support experience.</p><div class="job-meta">📍 Pretoria • Internship</div><button class="small-btn primary" onclick="openModal('opportunity')">View / Apply</button></div>
+ </div>
+</section>
+
+<section class="section" id="cv" style="background:#eaf4fb;max-width:none">
+ <div class="section" style="padding-top:0;padding-bottom:0">
+  <div class="section-head"><div><span class="kicker">CV & application support</span><h2>Make your next application stronger.</h2></div><p>MYEEH provides practical help with CV preparation, application information and digital access.</p></div>
+  <div class="split">
+   <div class="feature"><div class="icon">CV</div><h3>CV Starter Kit</h3><p>A simple structure for creating a clear, professional CV.</p><ul><li>Personal profile</li><li>Education & skills</li><li>Experience and achievements</li><li>Contact details checklist</li></ul><button class="btn btn-primary" onclick="openModal('cv')">Request CV help</button></div>
+   <div class="feature"><div class="icon">✓</div><h3>Application checklist</h3><p>Before submitting an application:</p><ul><li>Check eligibility requirements</li><li>Use a suitable CV</li><li>Proofread your information</li><li>Keep copies of submitted documents</li></ul><div class="notice">The physical MYEEH desk can assist eligible youth with applications and access to online opportunities.</div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="business">
+ <div class="section-head"><div><span class="kicker">Enterprise</span><h2>Turn an idea into action.</h2></div><p>Entrepreneurship support can help young people explore small-business ideas and practical next steps.</p></div>
+ <div class="grid">
+  <div class="card"><div class="icon">💡</div><h3>Business ideas</h3><p>Explore practical community-focused ideas such as services, recycling, food stalls and digital services.</p><button class="small-btn primary" onclick="openModal('business')">Explore support</button></div>
+  <div class="card"><div class="icon">📈</div><h3>Business basics</h3><p>Learn about customers, costs, pricing, marketing and keeping simple business records.</p><button class="small-btn primary" onclick="openModal('business')">Join a session</button></div>
+  <div class="card"><div class="icon">🤝</div><h3>Local partnerships</h3><p>Connect the Hub with local businesses for workshops, advertising, sponsorship and community initiatives.</p><button class="small-btn primary" onclick="openModal('business')">Partner with us</button></div>
+ </div>
+</section>
+
+<section class="section" id="workshops" style="background:#f0f8f5;max-width:none">
+ <div class="section" style="padding-top:0;padding-bottom:0">
+  <div class="section-head"><div><span class="kicker">Training & workshops</span><h2>Learn practical skills.</h2></div><p>Workshops bring employment, entrepreneurship, digital skills and community development together.</p></div>
+  <div class="grid">
+   <div class="feature workshop"><div class="datebox"><b>12</b> OCT</div><div><span class="tag">CV</span><h3>CV & Job Applications</h3><p>Build a CV and learn how to approach online applications.</p><button class="small-btn primary" onclick="openModal('workshop')">Register</button></div></div>
+   <div class="feature workshop"><div class="datebox"><b>19</b> OCT</div><div><span class="tag">BUSINESS</span><h3>Small Business Basics</h3><p>Turn a simple idea into a practical starting plan.</p><button class="small-btn primary" onclick="openModal('workshop')">Register</button></div></div>
+   <div class="feature workshop"><div class="datebox"><b>26</b> OCT</div><div><span class="tag">DIGITAL</span><h3>Digital Skills</h3><p>Improve everyday digital skills for work and education.</p><button class="small-btn primary" onclick="openModal('workshop')">Register</button></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="safety">
+ <div class="section-head"><div><span class="kicker">Community</span><h2>Building a safer, cleaner Mamelodi.</h2></div><p>The project connects youth opportunity with positive community participation and environmental action.</p></div>
+ <div class="split">
+  <div class="feature"><div class="icon">🛡</div><h3>Safety resources</h3><p>Share verified community resources, emergency contacts and information about local safety initiatives.</p><div class="notice">Prototype note: specific high-risk locations should only be published after verification and appropriate community approval.</div></div>
+  <div class="feature"><div class="icon">♻</div><h3>Clean-up & recycling</h3><p>Workshops can include practical education about sanitation, waste management and recycling to support a cleaner community.</p><ul><li>Community clean-up activities</li><li>Recycling awareness</li><li>Waste-management education</li></ul></div>
+ </div>
+</section>
+
+<section class="section" id="contact" style="background:#eaf4fb;max-width:none">
+ <div class="section" style="padding-top:0;padding-bottom:0">
+  <div class="split">
+   <div><span class="kicker">Get involved</span><h2>Ready to take the next step?</h2><p>Register for support, ask a question or connect with MYEEH for workshops and community partnerships.</p></div>
+   <div class="feature"><h3>Contact MYEEH</h3><label>Name</label><input id="contactName" placeholder="Your name"><label>What do you need?</label><select id="contactNeed"><option>CV & job application help</option><option>Workshop registration</option><option>Entrepreneurship support</option><option>Community partnership</option></select><label>Message</label><textarea id="contactMessage" rows="3" placeholder="Tell us how we can help"></textarea><button class="btn btn-primary" onclick="submitContact()">Send request</button><div class="success" id="contactSuccess">Thanks! Your prototype request has been recorded.</div></div>
+  </div>
+ </div>
+</section>
+
+<footer class="footer">
+ <div class="footer-inner">
+  <div><div class="logo" style="color:white"><span class="logo-mark">M</span><span>MYEEH<small style="color:#bcd0df">Mamelodi Youth Employment & Enterprise Hub</small></span></div><p>Creating opportunities, building futures and supporting community development.</p></div>
+  <div><h4>Explore</h4><p><a href="#opportunities">Opportunities</a></p><p><a href="#cv">CV Help</a></p><p><a href="#business">Enterprise</a></p><p><a href="#workshops">Workshops</a></p></div>
+  <div><h4>Prototype</h4><p>Designed as a Phase 2 demonstration website for the MYEEH project.</p><p>© 2026 MYEEH</p></div>
+ </div>
+</footer>
+
+<div class="modal" id="modal">
+ <div class="modal-box">
+  <button class="close" onclick="closeModal()">×</button>
+  <h2 id="modalTitle">Get started</h2><p id="modalText">Complete the short form below.</p>
+  <label>Name</label><input id="modalName" placeholder="Your name">
+  <label>Contact</label><input id="modalContact" placeholder="Phone or email">
+  <label>Message</label><textarea id="modalMsg" rows="3" placeholder="What would you like help with?"></textarea>
+  <button class="btn btn-primary" onclick="submitModal()">Submit request</button>
+  <div class="success" id="modalSuccess">Thank you! This prototype has received your request.</div>
+ </div>
+</div>
+
+<script>
+function toggleMenu(){document.getElementById('navLinks').style.display=document.getElementById('navLinks').style.display==='flex'?'none':'flex'}
+function filterJobs(type,btn){
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
+ document.querySelectorAll('.job').forEach(j=>j.style.display=(type==='all'||j.dataset.type===type)?'block':'none');
+}
+function openModal(type){
+ const title={opportunity:'Opportunity application',cv:'CV support request',business:'Enterprise support',workshop:'Workshop registration'}[type]||'Get started';
+ const text={opportunity:'Tell us what opportunity you are interested in.',cv:'Request practical support with your CV and applications.',business:'Tell us what business or entrepreneurship support you need.',workshop:'Register your interest in a MYEEH workshop.'}[type]||'Complete the short form below.';
+ document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;
+ document.getElementById('modal').classList.add('open');document.getElementById('modalSuccess').style.display='none';
+}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function submitModal(){document.getElementById('modalSuccess').style.display='block'}
+function submitContact(){document.getElementById('contactSuccess').style.display='block'}
+window.onclick=e=>{if(e.target===document.getElementById('modal'))closeModal()}
+</script>
+</body>
+</html>
